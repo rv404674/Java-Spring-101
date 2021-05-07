@@ -15,8 +15,8 @@ public class FirstProjectApplication {
 		// NOTE: Spring boot uses the concept of singleton design pattern.
 		// even if you call the alien class twice, "Object Created" will only be printed once.
 		// because singleton will only create the object once.
-		Alien a1 = context.getBean(Alien.class);
-		a1.show();
+		// Alien a1 = context.getBean(Alien.class);
+		// a1.show();
 
 		// NOTE: there can be two scopes. by default - Singleton and Prototype
 		// @Scope(value="prototype")
