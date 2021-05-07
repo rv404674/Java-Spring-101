@@ -5,6 +5,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 //@Scope(value="prototype")
+// NOTE: component makes Alien class a part of spring framework and put it in the spring container.
 public class Alien {
 
     private int id;
