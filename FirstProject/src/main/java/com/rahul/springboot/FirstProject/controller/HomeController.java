@@ -1,5 +1,8 @@
 package com.rahul.springboot.FirstProject.controller;
 
+import com.rahul.springboot.FirstProject.dao.AlienDao;
+import com.rahul.springboot.FirstProject.model.Alien;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -11,9 +14,14 @@ import javax.servlet.http.HttpSession;
 @Controller
 public class HomeController {
 
+    @Autowired
+    AlienDao alienDao;
+
     @RequestMapping("home")
     //@ResponseBody
     // to render the html page, use thymeleaf.
+    // do this for disabling thymlead
+    // spring.thymeleaf.enabled=false
     public String home() {
         System.out.println("Hello REST API ****");
         return "home";
@@ -37,5 +45,38 @@ public class HomeController {
     // localhost:8080/home2?name=Rahul&caste=Rajput
     public String returnMultipleParams(@RequestParam("name") String myName, @RequestParam("caste") String caste){
         return myName + caste;
+    }
+
+    @RequestMapping("/addAlien")
+    @ResponseBody
+    // NOTE
+    // The @ResponseBody annotation tells a controller that the object returned is automatically serialized into JSON
+    // and passed back into the HttpResponse object.
+
+    // Now what the annotation means is that the returned value of the method will constitute the body of the HTTP
+    // response. Of course, an HTTP response can't contain Java objects.
+    // So this list of accounts is transformed to a format suitable for REST applications, typically JSON or XML.
+
+    // NOTE
+    // Simply put, the @RequestBody
+    // annotation maps the HttpRequest body to a transfer or domain object, enabling automatic deserialization of the
+    // inbound HttpRequest body onto a Java object.
+    // public ResponseEntity postController(
+    //  @RequestBody LoginForm loginForm)
+    // public class LoginForm {
+    //    private String username;
+    //    private String password;
+    //    // ...
+    //}
+
+
+    // this will take alien's id and name, will store it in db.
+    // enable h2 in application.properties
+    // localhost:8080/home2?aid=Alien12&name=AlienSachin
+    // or you can directly pass alien. It will match the params with the class variables, and based on that route
+    // request.
+    // http://localhost:8080/h2-console/login.do?jsessionid=76bbb3278ad2f7fd6dd5d01c6347abf8
+    public void add(Alien alien){
+        alienDao.save(alien);
     }
 }

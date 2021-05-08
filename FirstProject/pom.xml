@@ -34,11 +34,12 @@
 		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/com.h2database/h2 -->
+		<!-- h2 is a in memory db -->
 		<dependency>
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
 			<version>1.4.197</version>
-			<scope>test</scope>
+			<scope>runtime</scope>
 		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-data-jpa -->
