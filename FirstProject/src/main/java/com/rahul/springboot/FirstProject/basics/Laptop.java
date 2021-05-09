@@ -1,4 +1,4 @@
-package com.rahul.springboot.FirstProject;
+package com.rahul.springboot.FirstProject.basics;
 
 import org.springframework.stereotype.Component;
 

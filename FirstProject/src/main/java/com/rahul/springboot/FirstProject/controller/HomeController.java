@@ -40,7 +40,7 @@ public class HomeController {
 
     @RequestMapping("home2")
     @ResponseBody
-    // if you dont use ResponseBody, theymleaf will try to search for RahulRajput.html
+    // if you don't use ResponseBody, theymleaf will try to search for RahulRajput.html
     //what if you have multiple params
     // localhost:8080/home2?name=Rahul&caste=Rajput
     public String returnMultipleParams(@RequestParam("name") String myName, @RequestParam("caste") String caste){
@@ -68,7 +68,6 @@ public class HomeController {
     //    private String password;
     //    // ...
     //}
-
 
     // this will take alien's id and name, will store it in db.
     // enable h2 in application.properties
