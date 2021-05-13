@@ -20,12 +20,14 @@ public class Alien {
     // Id annotation specifies the primary key of an entity.
     private int aid;
     private String aname;
+    private String tech;
 
     @Override
-    public String  toString() {
+    public String toString() {
         return "Alien{" +
                 "aid=" + aid +
                 ", aname='" + aname + '\'' +
+                ", tech='" + tech + '\'' +
                 '}';
     }
 
@@ -43,5 +45,13 @@ public class Alien {
 
     public void setAname(String aname) {
         this.aname = aname;
+    }
+
+    public String getTech(){
+        return this.tech;
+    }
+
+    public void setTech(String tech){
+        this.tech = tech;
     }
 }

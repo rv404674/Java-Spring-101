@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 @Controller
 public class HomeController {
@@ -78,4 +79,20 @@ public class HomeController {
     public void add(Alien alien){
         alienDao.save(alien);
     }
+
+    @RequestMapping("/getAlien")
+    @ResponseBody
+    public String getAlien(@RequestParam int aid){
+        Alien alien = alienDao.findById(aid).orElse(null);
+        return alien.toString();
+    }
+
+    @RequestMapping("/getAlienByName")
+    @ResponseBody
+    public String getAlienByTech(@RequestParam String tech){
+        List<Alien> alist = alienDao.findByTechSorted(tech);
+        System.out.println("TESTING AUTORELOADING");
+        return alist.toString();
+    }
+
 }
