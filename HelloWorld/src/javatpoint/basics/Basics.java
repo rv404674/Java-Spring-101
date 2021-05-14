@@ -1,4 +1,4 @@
-package javatpoint;
+package javatpoint.basics;
 
 public class Basics {
     public static void main(String[] args){

@@ -1,7 +1,7 @@
-package javatpoint;
+package javatpoint.basics;
 
-import basics.Account;
-import basics.VipCustomer;
+import timbachulka.constructor.Account;
+import timbachulka.constructor.VipCustomer;
 
 public class Main {
 
