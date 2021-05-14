@@ -3,17 +3,17 @@ package com.rahul.springboot.FirstProject.controller;
 import com.rahul.springboot.FirstProject.dao.AlienDao;
 import com.rahul.springboot.FirstProject.model.Alien;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.List;
+import java.util.Optional;
 
-@Controller
+// NOTE if you dont want to mention @ResponseBody everytime, i.e you will be returning json data everytime use
+//  RestController
+// @Controller
+@RestController
 public class HomeController {
 
     @Autowired
@@ -93,19 +93,25 @@ public class HomeController {
     // localhost:8080/aliens
     // this looks better, give me alien 102
     // NOTE: REST
-    @RequestMapping("/aliens")
+    @GetMapping("/aliens")
     // by default when you do return string, it will expect that we are returning a view name.
     // but we are retuning data. than do this
-    @ResponseBody
-    public String getAliens(){
-        return alienDao.findAll().toString();
+    // spring boot uses Jackson to convert java objects to json
+    public List<Alien> getAliens(){
+        return alienDao.findAll();
+    }
+
+    @PostMapping("/alien")
+    public Alien addAlien(@RequestBody Alien alien){
+        alienDao.save(alien);
+        return alien;
     }
 
     // NOTE: wildcard
     @RequestMapping("/alien/{aid}")
     @ResponseBody
-    public String getAlien(@PathVariable("aid") int aid){
-        return alienDao.findById(aid).toString();
+    public Optional<Alien> getAlien(@PathVariable("aid") int aid){
+        return alienDao.findById(aid);
     }
 
 }

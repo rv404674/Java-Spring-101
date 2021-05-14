@@ -1,13 +1,15 @@
 package com.rahul.springboot.FirstProject.dao;
 
 import com.rahul.springboot.FirstProject.model.Alien;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
 
 // SpringData JPA
-public interface AlienDao extends CrudRepository<Alien, Integer> {
+// change CrudRepository to JpaRepository
+// JpaRepository gives List whereas Crud gives iterable.
+public interface AlienDao extends JpaRepository<Alien, Integer> {
     // find all the aliens in tech domain
     // NOTE: all method names should start by findBy and end with name of property.
 
