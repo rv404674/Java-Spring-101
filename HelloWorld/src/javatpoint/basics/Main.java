@@ -26,5 +26,9 @@ public class Main {
 
         VipCustomer vipCustomer2 = new VipCustomer(5000, "rv404674@gmail.com");
         System.out.println(vipCustomer1.getCreditLimit());
+
+
+        Rahul rahul = new Rahul();
+        rahul.capitalize();
     }
 }
