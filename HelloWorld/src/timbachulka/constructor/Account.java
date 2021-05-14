@@ -1,4 +1,4 @@
-package basics;
+package timbachulka.constructor;
 
 // NOTE: constructor learning code - part1.
 public class Account {

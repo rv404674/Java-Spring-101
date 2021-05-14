@@ -1,4 +1,4 @@
-package basics;
+package timbachulka.constructor;
 
 // NOTE: Constructor learning code - part2
 public class VipCustomer {

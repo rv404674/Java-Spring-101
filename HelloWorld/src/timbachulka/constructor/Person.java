@@ -1,4 +1,4 @@
-package basics;
+package timbachulka.constructor;
 
 public class Person {
     private String firstName;
