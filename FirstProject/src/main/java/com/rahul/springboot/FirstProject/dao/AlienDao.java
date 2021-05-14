@@ -6,6 +6,7 @@ import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
 
+// SpringData JPA
 public interface AlienDao extends CrudRepository<Alien, Integer> {
     // find all the aliens in tech domain
     // NOTE: all method names should start by findBy and end with name of property.

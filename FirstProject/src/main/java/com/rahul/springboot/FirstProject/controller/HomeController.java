@@ -4,6 +4,7 @@ import com.rahul.springboot.FirstProject.dao.AlienDao;
 import com.rahul.springboot.FirstProject.model.Alien;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -80,19 +81,31 @@ public class HomeController {
         alienDao.save(alien);
     }
 
-    @RequestMapping("/getAlien")
-    @ResponseBody
-    public String getAlien(@RequestParam int aid){
-        Alien alien = alienDao.findById(aid).orElse(null);
-        return alien.toString();
-    }
-
     @RequestMapping("/getAlienByName")
     @ResponseBody
     public String getAlienByTech(@RequestParam String tech){
         List<Alien> alist = alienDao.findByTechSorted(tech);
         System.out.println("TESTING AUTORELOADING");
         return alist.toString();
+    }
+
+    // localhost:8080/alien/102
+    // localhost:8080/aliens
+    // this looks better, give me alien 102
+    // NOTE: REST
+    @RequestMapping("/aliens")
+    // by default when you do return string, it will expect that we are returning a view name.
+    // but we are retuning data. than do this
+    @ResponseBody
+    public String getAliens(){
+        return alienDao.findAll().toString();
+    }
+
+    // NOTE: wildcard
+    @RequestMapping("/alien/{aid}")
+    @ResponseBody
+    public String getAlien(@PathVariable("aid") int aid){
+        return alienDao.findById(aid).toString();
     }
 
 }
