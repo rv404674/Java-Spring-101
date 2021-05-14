@@ -102,6 +102,7 @@ public class HomeController {
     }
 
     @PostMapping("/alien")
+    // use RequestBody, if you want to accecpt a json body
     public Alien addAlien(@RequestBody Alien alien){
         alienDao.save(alien);
         return alien;
