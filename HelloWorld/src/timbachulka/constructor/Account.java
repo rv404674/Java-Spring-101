@@ -17,6 +17,8 @@ public class Account {
     }
 
     // this will be called, when you send the parameters as well
+    // NOTE: Constructor Chaining
+    // we are using this contructor to initialize other contructors.
     public Account(String number, double balance, String customerEmailAddress, String customerName, String customerPhoneNumber){
         System.out.println("Account constructor with parameters called");
         this.number = number;
